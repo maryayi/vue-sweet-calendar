@@ -1,0 +1,23 @@
+options:
+  merge-default-rules: true
+rules:
+  no-ids: 0
+  hex-notation:
+    - 1
+    - style: uppercase
+  class-name-format:
+    - 2
+    - convention: hyphenatedlowercase
+  id-name-format:
+    - 2
+    - convention: camelcase
+  border-zero:
+    - 1
+    - convention: '0'
+  leading-zero:
+    - 1
+    - include: true
+  no-vendor-prefixes:
+    - 1
+    - ignore-non-standard: true
+  nesting-depth: 0
