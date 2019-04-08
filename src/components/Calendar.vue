@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header">
         <div class="left-arrow"></div>
-        <div class="month">{{ selectedMonth }} {{ selectedYear }}</div>
+        <div class="month">{{ selectedMonthName }} {{ selectedYear }}</div>
         <div class="right-arrow"></div>
       </div>
       <div class="body">
@@ -19,10 +19,15 @@
           :key="index"
         >
           <div
-            v-if="day > 0"
-            :class="['day', `day-${day}`]"
+            v-if="day"
+            :class="[
+            'day',
+            `day-${day.getDate()},
+            weekday-${day.getDay()}`,
+            day.toDateString() === today.toDateString() ? 'today' : null
+            ]"
           >
-            <p>{{ day }}</p>
+            <p>{{ day.getDate() }}</p>
           </div>
         </div>
       </div>
@@ -36,6 +41,7 @@ export default {
   data () {
     return {
       today: new DateTime(),
+      date: null,
       weekdays: [
         'S',
         'M',
@@ -45,27 +51,34 @@ export default {
         'F',
         'S'
       ],
-      startWeekDayOfMonth: this.date.getFirstWeekdayOfMonth(),
-      numberOfDays: this.date.getNumberOfDaysInMonth(),
-      selectedMonth: this.date.getMonthName(),
-      selectedYear: this.date.getFullYear()
+      startWeekDayOfMonth: null,
+      numberOfDays: null,
+      selectedMonth: null,
+      selectedMonthName: null,
+      selectedYear: null
     }
   },
   computed: {
     days () {
-      let emptyDays = Array(this.startWeekDayOfMonth - 1).fill(0)
-      let days = Array(this.numberOfDays).fill().map((item, index) => index + 1)
+      let emptyDays = Array(this.startWeekDayOfMonth - 1).fill(null)
+      let days = Array(this.numberOfDays).fill().map((item, index) => new DateTime(this.selectedYear, this.selectedMonth, index + 1))
       return emptyDays.concat(days)
     }
   },
   methods: {},
   props: {
-    date: {
-      type: DateTime,
-      default () {
-        return new DateTime()
-      }
+    initialDate: {
+      type: String,
+      default: null
     }
+  },
+  beforeMount () {
+    this.date = Date.parse(this.initialDate) ? new DateTime(this.initialDate) : new DateTime()
+    this.startWeekDayOfMonth = this.date.getFirstWeekdayOfMonth()
+    this.numberOfDays = this.date.getNumberOfDaysInMonth()
+    this.selectedMonth = this.date.getMonth()
+    this.selectedMonthName = this.date.getMonthName()
+    this.selectedYear = this.date.getFullYear()
   }
 
 }

@@ -16,22 +16,8 @@ export default class DateTime extends Date {
     return super.getDay() + 1
   }
 
-  getMonthName () {
-    let months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ]
-    return months[this.getMonth() - 1]
+  getMonthName (mode = 'long') {
+    return this.toLocaleString('en-US', { month: mode })
   }
 
   getDayName () {
@@ -48,7 +34,11 @@ export default class DateTime extends Date {
   }
 
   getNumberOfDaysInMonth () {
-    return new this.constructor(this.getFullYear(), this.getMonth() + 1, 0).getDate()
+    return new this.constructor(
+      this.getFullYear(),
+      this.getMonth() + 1,
+      0
+    ).getDate()
   }
 
   getFirstWeekdayOfMonth () {
