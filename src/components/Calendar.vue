@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header">
         <div class="left-arrow"></div>
-        <div class="month">{{ months[selectedMonth] }} {{ selectedYear }}</div>
+        <div class="month">{{ selectedMonth }} {{ selectedYear }}</div>
         <div class="right-arrow"></div>
       </div>
       <div class="body">
@@ -45,23 +45,9 @@ export default {
         'F',
         'S'
       ],
-      months: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      ],
       startWeekDayOfMonth: this.getFirstWeekdayOfMonth(this.date),
       numberOfDays: this.getNumberOfDaysInMonth(this.date),
-      selectedMonth: this.date.getMonth(),
+      selectedMonth: this.date.getMonthName(),
       selectedYear: this.date.getFullYear()
     }
   },
@@ -77,7 +63,7 @@ export default {
       return new DateTime(date.getFullYear(), date.getMonth() + 1, 0).getDate()
     },
     getFirstWeekdayOfMonth (date) {
-      return (new DateTime(date.getFullYear(), date.getMonth(), 1).getDay()) + 1
+      return (new DateTime(date.getFullYear(), date.getMonth(), 1).getDay())
     }
   },
   props: {
