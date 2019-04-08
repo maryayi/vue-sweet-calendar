@@ -30,11 +30,12 @@
   </div>
 </template>
 <script>
+import DateTime from '../DateTime.js'
 export default {
   name: 'Calendar',
   data () {
     return {
-      today: new Date(),
+      today: new DateTime(),
       weekdays: [
         'S',
         'M',
@@ -73,17 +74,17 @@ export default {
   },
   methods: {
     getNumberOfDaysInMonth (date) {
-      return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+      return new DateTime(date.getFullYear(), date.getMonth() + 1, 0).getDate()
     },
     getFirstWeekdayOfMonth (date) {
-      return (new Date(date.getFullYear(), date.getMonth(), 1).getDay()) + 1
+      return (new DateTime(date.getFullYear(), date.getMonth(), 1).getDay()) + 1
     }
   },
   props: {
     date: {
-      type: Date,
+      type: DateTime,
       default () {
-        return new Date()
+        return new DateTime()
       }
     }
   }
