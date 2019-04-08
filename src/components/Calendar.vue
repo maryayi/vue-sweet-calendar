@@ -2,9 +2,13 @@
   <div id="calendar">
     <div class="container">
       <div class="header">
-        <div class="left-arrow"></div>
+        <div class="left-arrow" @click="prevMonth">
+          <span>&lt;</span>
+        </div>
         <div class="month">{{ selectedMonthName }} {{ selectedYear }}</div>
-        <div class="right-arrow"></div>
+        <div class="right-arrow" @click="nextMonth">
+          <span>&gt;</span>
+        </div>
       </div>
       <div class="body">
         <div
@@ -27,7 +31,7 @@
             day.toDateString() === today.toDateString() ? 'today' : null
             ]"
           >
-            <p>{{ day.getDate() }}</p>
+            <span>{{ day.getDate() }}</span>
           </div>
         </div>
       </div>
@@ -50,12 +54,7 @@ export default {
         'T',
         'F',
         'S'
-      ],
-      startWeekDayOfMonth: null,
-      numberOfDays: null,
-      selectedMonth: null,
-      selectedMonthName: null,
-      selectedYear: null
+      ]
     }
   },
   computed: {
@@ -63,9 +62,31 @@ export default {
       let emptyDays = Array(this.startWeekDayOfMonth - 1).fill(null)
       let days = Array(this.numberOfDays).fill().map((item, index) => new DateTime(this.selectedYear, this.selectedMonth, index + 1))
       return emptyDays.concat(days)
+    },
+    startWeekDayOfMonth () {
+      return this.date.getFirstWeekdayOfMonth()
+    },
+    numberOfDays () {
+      return this.date.getNumberOfDaysInMonth()
+    },
+    selectedMonth () {
+      return this.date.getMonth()
+    },
+    selectedMonthName () {
+      return this.date.getMonthName()
+    },
+    selectedYear () {
+      return this.date.getFullYear()
     }
   },
-  methods: {},
+  methods: {
+    prevMonth () {
+      this.date = new DateTime(this.selectedYear, this.selectedMonth - 1, 1)
+    },
+    nextMonth () {
+      this.date = new DateTime(this.selectedYear, this.selectedMonth + 1, 1)
+    }
+  },
   props: {
     initialDate: {
       type: String,
@@ -74,11 +95,6 @@ export default {
   },
   beforeMount () {
     this.date = Date.parse(this.initialDate) ? new DateTime(this.initialDate) : new DateTime()
-    this.startWeekDayOfMonth = this.date.getFirstWeekdayOfMonth()
-    this.numberOfDays = this.date.getNumberOfDaysInMonth()
-    this.selectedMonth = this.date.getMonth()
-    this.selectedMonthName = this.date.getMonthName()
-    this.selectedYear = this.date.getFullYear()
   }
 
 }
