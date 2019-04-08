@@ -2,21 +2,28 @@
   <div id="calendar">
     <div class="container">
       <div class="header">
-        <div class="left-arrow" @click="prevMonth">
+        <div
+          class="left-arrow"
+          @click="prevMonth"
+        >
           <span>&lt;</span>
         </div>
         <div class="month">{{ selectedMonthName }} {{ selectedYear }}</div>
-        <div class="right-arrow" @click="nextMonth">
+        <div
+          class="right-arrow"
+          @click="nextMonth"
+        >
           <span>&gt;</span>
         </div>
       </div>
       <div class="body">
         <div
           v-for="(day, index) in weekdays"
-          :key="`day-name-${index}`"
+          :key="`day-name-${index + 1}`"
           class="day-name"
+          :title="day"
         >
-          {{ day }}
+          {{ day[0] }}
         </div>
         <div
           v-for="(day,index) in days"
@@ -45,21 +52,14 @@ export default {
   data () {
     return {
       today: new DateTime(),
+      firstDayOfWeek: 1, // 1: Sunday, 2: Saturday, etc
       date: null,
-      weekdays: [
-        'S',
-        'M',
-        'T',
-        'W',
-        'T',
-        'F',
-        'S'
-      ]
+      weekdays: null
     }
   },
   computed: {
     days () {
-      let emptyDays = Array(this.startWeekDayOfMonth - 1).fill(null)
+      let emptyDays = Array((this.startWeekDayOfMonth - this.firstDayOfWeek + 7) % 7).fill(null)
       let days = Array(this.numberOfDays).fill().map((item, index) => new DateTime(this.selectedYear, this.selectedMonth, index + 1))
       return emptyDays.concat(days)
     },
@@ -85,6 +85,22 @@ export default {
     },
     nextMonth () {
       this.date = new DateTime(this.selectedYear, this.selectedMonth + 1, 1)
+    },
+    generateWeekdayNames (firstDayOfWeek = 1) {
+      let weekdays = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ]
+      for (let i = 2; i <= firstDayOfWeek; i++) {
+        let first = weekdays.shift()
+        weekdays.push(first)
+      }
+      return weekdays
     }
   },
   props: {
@@ -95,6 +111,7 @@ export default {
   },
   beforeMount () {
     this.date = Date.parse(this.initialDate) ? new DateTime(this.initialDate) : new DateTime()
+    this.weekdays = this.generateWeekdayNames(this.firstDayOfWeek)
   }
 
 }
