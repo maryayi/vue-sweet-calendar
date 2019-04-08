@@ -1,23 +1,33 @@
-export default class DateTime extends Date {
+export default class DateTime {
   constructor (...args) {
+    let date
     if (args.length > 1) {
       let [year, month, ...rest] = args
-      super(year, month - 1, ...rest)
+      date = new Date(year, month - 1, ...rest)
     } else {
-      super(...args)
+      date = new Date(...args)
     }
+    this._date = date
   }
 
   getMonth () {
-    return super.getMonth() + 1
+    return this._date.getMonth() + 1
   }
 
   getDay () {
-    return super.getDay() + 1
+    return this._date.getDay() + 1
   }
 
   getMonthName (mode = 'long') {
-    return this.toLocaleString('en-US', { month: mode })
+    return this._date.toLocaleString('en-US', { month: mode })
+  }
+
+  getFullYear () {
+    return this._date.getFullYear()
+  }
+
+  getDate () {
+    return this._date.getDate()
   }
 
   getDayName () {
@@ -31,6 +41,10 @@ export default class DateTime extends Date {
       'Saturday'
     ]
     return days[this.getDay() - 1]
+  }
+
+  toDateString () {
+    return this._date.toDateString()
   }
 
   getNumberOfDaysInMonth () {
