@@ -30,17 +30,8 @@ export default class DateTime {
     return this._date.getDate()
   }
 
-  getDayName () {
-    let days = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
-    ]
-    return days[this.getDay() - 1]
+  getDayName (mode = 'long') {
+    return this._date.toLocaleString('en-US', { weekday: mode })
   }
 
   toDateString () {
