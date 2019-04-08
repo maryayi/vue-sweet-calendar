@@ -46,4 +46,12 @@ export default class DateTime extends Date {
     ]
     return days[this.getDay() - 1]
   }
+
+  getNumberOfDaysInMonth () {
+    return new this.constructor(this.getFullYear(), this.getMonth() + 1, 0).getDate()
+  }
+
+  getFirstWeekdayOfMonth () {
+    return new this.constructor(this.getFullYear(), this.getMonth(), 1).getDay()
+  }
 }

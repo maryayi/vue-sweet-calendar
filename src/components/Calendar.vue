@@ -45,8 +45,8 @@ export default {
         'F',
         'S'
       ],
-      startWeekDayOfMonth: this.getFirstWeekdayOfMonth(this.date),
-      numberOfDays: this.getNumberOfDaysInMonth(this.date),
+      startWeekDayOfMonth: this.date.getFirstWeekdayOfMonth(),
+      numberOfDays: this.date.getNumberOfDaysInMonth(),
       selectedMonth: this.date.getMonthName(),
       selectedYear: this.date.getFullYear()
     }
@@ -58,14 +58,7 @@ export default {
       return emptyDays.concat(days)
     }
   },
-  methods: {
-    getNumberOfDaysInMonth (date) {
-      return new DateTime(date.getFullYear(), date.getMonth() + 1, 0).getDate()
-    },
-    getFirstWeekdayOfMonth (date) {
-      return (new DateTime(date.getFullYear(), date.getMonth(), 1).getDay())
-    }
-  },
+  methods: {},
   props: {
     date: {
       type: DateTime,
