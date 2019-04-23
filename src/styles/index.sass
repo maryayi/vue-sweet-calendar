@@ -26,32 +26,50 @@
       grid-template-rows: repeat(7, 1fr)
       justify-items: center
 
-      .day
-        align-content: center
-        background-color: white
-        border-radius: 50%
-        box-sizing: content-box
-        color: black
+      .day-container
+        position: relative
         display: grid
-        height: 25px
-        justify-content: center
-        padding: 10px
-        width: 25px
+        grid-auto-columns: 1fr 1fr
+        grid-auto-flow: column
+        padding: 10px 0
+        width: 100%
 
-        &:hover
-          background-color: gray
-          cursor: pointer
+        .before
+          height: 40px
 
-        &.today
-          border: 2px solid #008290
-          border-radius: 10%
-          color: #008290
+        .after
+          height: 40px
 
-        span
-          font-size: 15px
-          margin: 0
-          padding: 0
-          width: fit-content
+        .day
+          align-content: center
+          background-color: white
+          border-radius: 50%
+          box-sizing: content-box
+          color: black
+          display: grid
+          height: 25px
+          justify-content: center
+          left: 50%
+          padding: 10px
+          position: absolute
+          top: 50%
+          transform: translate(-50%, -50%)
+          width: 25px
 
-      .day-name
-        font-weight: bold
+          &:hover
+            background-color: gray
+            cursor: pointer
+
+          &.today
+            border: 2px solid #008290
+            border-radius: 10%
+            color: #008290
+
+          span
+            font-size: 15px
+            margin: 0
+            padding: 0
+            width: fit-content
+
+        .day-name
+          font-weight: bold

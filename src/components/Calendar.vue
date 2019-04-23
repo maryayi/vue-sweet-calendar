@@ -28,7 +28,12 @@
         <div
           v-for="(day,index) in days"
           :key="index"
+          class="day-container"
         >
+          <div
+            class="before"
+            v-if="day"
+          >&nbsp;</div>
           <div
             v-if="day"
             :class="[
@@ -40,6 +45,10 @@
           >
             <span>{{ day.getDate() }}</span>
           </div>
+          <div
+            class="after"
+            v-if="day"
+          >&nbsp;</div>
         </div>
       </div>
     </div>
