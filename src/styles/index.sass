@@ -5,7 +5,6 @@
   .container
     display: grid
     grid-template-rows: 40px 1fr
-    height: 500px
 
     .header
       display: grid
@@ -22,54 +21,54 @@
     .body
       align-items: center
       display: grid
+      grid-row-gap: 8px
       grid-template-columns: repeat(7, 1fr)
       grid-template-rows: repeat(7, 1fr)
       justify-items: center
 
+      .day-name
+        color: $week-day-name-color
+        font-weight: bold
+
       .day-container
-        position: relative
         display: grid
         grid-auto-columns: 1fr 1fr
         grid-auto-flow: column
-        padding: 10px 0
+        position: relative
         width: 100%
 
         .before
-          height: 40px
+          height: 28px
 
         .after
-          height: 40px
+          height: 28px
 
         .day
           align-content: center
-          background-color: white
+          background-color: $light-color
           border-radius: 50%
           box-sizing: content-box
-          color: black
+          color: $day-color
           display: grid
-          height: 25px
+          height: 8px
           justify-content: center
           left: 50%
           padding: 10px
           position: absolute
           top: 50%
           transform: translate(-50%, -50%)
-          width: 25px
-
-          &:hover
-            background-color: gray
-            cursor: pointer
+          width: 8px
 
           &.today
-            border: 2px solid #008290
-            border-radius: 10%
-            color: #008290
+            border: 2px solid $today-color
+            color: $today-color
+
+          &.off-day
+            background-color: $off-day-background-color
+            font-weight: bold
 
           span
-            font-size: 15px
+            font-size: 14px
             margin: 0
             padding: 0
             width: fit-content
-
-        .day-name
-          font-weight: bold

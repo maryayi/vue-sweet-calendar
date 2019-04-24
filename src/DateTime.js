@@ -7,6 +7,7 @@ export default class DateTime {
     } else {
       date = new Date(...args)
     }
+    date.setHours(0, 0, 0, 0)
     this._date = date
   }
 
@@ -30,8 +31,35 @@ export default class DateTime {
     return this._date.getDate()
   }
 
+  getTime () {
+    return this._date.getTime()
+  }
+
   getDayName (mode = 'long') {
     return this._date.toLocaleString('en-US', { weekday: mode })
+  }
+
+  getNextDay () {
+    let day = new this.constructor(this.getTime())
+    day.setDate(day.getDate() + 1)
+    return day
+  }
+
+  getPrevDay () {
+    let day = new this.constructor(this.getTime())
+    day.setDate(day.getDate() - 1)
+    return day
+  }
+
+  setDate (date) {
+    this._date.setDate(date)
+    return this.getTime()
+  }
+
+  isInRange (start, end) {
+    let startCheck = this.getTime() >= new this.constructor(start).getTime()
+    let endCheck = this.getTime() <= new this.constructor(end).getTime()
+    return startCheck && endCheck
   }
 
   toDateString () {

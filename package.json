@@ -1,12 +1,22 @@
 {
   "name": "vue-sweet-calendar",
   "version": "0.1.0",
-  "private": true,
+  "description": "A simple and sweet calendar for Vue.js",
+  "main": "./dist/SweetCalendar.umd.min.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --dest docs",
+    "build-bundle": "vue-cli-service build --target lib --name SweetCalendar ./src/components/Calendar.vue",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "prepare": "npm run build-bundle"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -28,5 +38,20 @@
     "sass-lint": "^1.12.1",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "keywords": [
+    "vue",
+    "vue.js",
+    "vuejs",
+    "component",
+    "calendar"
+  ],
+  "author": "Mahdi Aryayi <mahdiaryayi@gmail.com>",
+  "contributors": [
+    {
+      "name": "Mahdi Aryayi",
+      "email": "mahdiaryayi@gmail.com"
+    }
+  ],
+  "license": "MIT"
 }
