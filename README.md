@@ -21,10 +21,9 @@ Inside your `.vue` files
   <div id="your-component">
     <!-- Using Component -->
     <sweet-calendar
-      :checked="checked"
-      :loading="loading"
-      label="Title of checkbox"
-      @click.native="toggleStatus"
+      :eventCategories="eventCategories"
+      :events="events"
+      ref="calendar"
     />
   </div>
 </template>
@@ -37,17 +36,47 @@ export default {
   name: 'YourComponentName',
   data() {
     return {
-      checked: false,
-      loading: false
+      eventCategories: [
+        {
+          id: 1,
+          name: 'Personal',
+          textColor: 'white',
+          backgroundColor: 'Blue'
+        },
+        {
+          id: 2,
+          name: 'Company-wide',
+          textColor: 'white',
+          backgroundColor: 'red'
+        }
+      ],
+      events: [
+        {
+          start: '2019-04-02',
+          end: '2019-04-04',
+          categoryId: 1
+        },
+        {
+          start: '2019-04-08',
+          end: '2019-04-09',
+          categoryId: 1
+        },
+        {
+          start: '2019-04-10',
+          end: '2019-04-11',
+          categoryId: 2
+        },
+        {
+          start: '2019-04-23',
+          end: '2019-04-23',
+          categoryId: 2
+        }
+      ]
     }
   },
   methods: {
-    toggleStatus() {
-      this.loading = true
-      setTimeout(() => {
-        this.loading = false
-        this.checked = !this.checked
-      }, 2000)
+    goToday() {
+      this.$refs.calendar.goToday()
     }
   },
   components: {
