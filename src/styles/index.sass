@@ -7,14 +7,20 @@
     grid-template-rows: 40px 1fr
 
     .header
+      align-items: center
       display: grid
-      grid-template-columns: 100px 1fr 100px
+      grid-column-gap: 5px
+      grid-template-columns: repeat(3, 1fr)
 
       .left-arrow
+        justify-self: end
+
         span
           cursor: pointer
 
       .right-arrow
+        justify-self: start
+
         span
           cursor: pointer
 
