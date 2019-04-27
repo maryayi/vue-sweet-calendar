@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="#">
+    <img src="https://github.com/maryayi/vue-sweet-calendar/blob/master/src/assets/vue-sweet-calendar.png?raw=true" alt="vue-sweet-calendar" />
+  </a>
+</p>
+
 <h1 align="center" >vue-sweet-calendar</h1>
 
 <p align="center" class="badges" >
