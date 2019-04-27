@@ -46,6 +46,10 @@
     "component",
     "calendar"
   ],
+  "homepage": "https://github.com/maryayi/vue-sweet-calendar",
+  "bugs": {
+    "url": "https://github.com/maryayi/vue-sweet-calendar/issues"
+  },
   "author": "Mahdi Aryayi <mahdiaryayi@gmail.com>",
   "contributors": [
     {

@@ -88,13 +88,13 @@ export default {
 
 ## Component props
 
-| prop              | description                                                                       | default                        |
-| ----------------- | --------------------------------------------------------------------------------- | ------------------------------ |
-| `initialDate`     | First date that is showing on calendar                                            | null (showing current month)   |
-| `firstDayOfWeek`  | First day of week (1: sunday, 2:monday, 3:tuesday, etc)                           | 1 (Sunday)                     |
-| `eventCategories` | An array of objects showing different categories of events (see an example below) | [] (no categories)             |
-| `events`          | An array of objects showing list of events                                        | [] (no events)                 |
-| `offDays`         | An array for determining that which weekdays are off.                             | [1, 7] (saturdays and sundays) |
+| prop              | description                                                                       | default                          |
+| ----------------- | --------------------------------------------------------------------------------- | -------------------------------- |
+| `initialDate`     | First date that is showing on calendar                                            | `null` (showing current month)   |
+| `firstDayOfWeek`  | First day of week (1: sunday, 2:monday, 3:tuesday, etc)                           | `1` (Sunday)                     |
+| `eventCategories` | An array of objects showing different categories of events (see an example below) | `[]` (no categories)             |
+| `events`          | An array of objects showing list of events                                        | `[]` (no events)                 |
+| `offDays`         | An array for determining that which weekdays are off.                             | `[1, 7]` (saturdays and sundays) |
 
 ## Component methods
 
