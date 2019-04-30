@@ -40,23 +40,31 @@ export default {
       ],
       events: [
         {
+          title: 'test1',
           start: '2019-04-02',
           end: '2019-04-04',
+          repeat: 'never',
           categoryId: 1
         },
         {
+          title: 'test2',
           start: '2019-04-08',
           end: '2019-04-09',
+          repeat: 'monthly',
           categoryId: 1
         },
         {
+          title: 'test3',
           start: '2019-04-10',
           end: '2019-04-11',
+          repeat: 'yearly',
           categoryId: 2
         },
         {
+          title: 'test4',
           start: '2019-04-23',
           end: '2019-04-23',
+          repeat: 'monthly',
           categoryId: 2
         }
       ]

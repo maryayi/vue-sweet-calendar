@@ -120,7 +120,7 @@ export default {
     generateDayStyle (date) {
       let style = {}
       for (let event of this.events) {
-        if (date.isInRange(event.start, event.end)) {
+        if (date.isInRange(event.start, event.end, event.repeat)) {
           let category = this.eventCategories.find(item => item.id === event.categoryId) || {}
           Object.assign(style, {
             color: category.textColor,
@@ -134,7 +134,7 @@ export default {
     generateBeforeStyle (date) {
       let style = {}
       for (let event of this.events) {
-        if (date.isInRange(event.start, event.end) && date.getPrevDay().isInRange(event.start, event.end)) {
+        if (date.isInRange(event.start, event.end, event.repeat) && date.getPrevDay().isInRange(event.start, event.end, event.repeat)) {
           let category = this.eventCategories.find(item => item.id === event.categoryId) || {}
           Object.assign(style, {
             backgroundColor: category.backgroundColor
@@ -146,7 +146,7 @@ export default {
     generateAfterStyle (date) {
       let style = {}
       for (let event of this.events) {
-        if (date.isInRange(event.start, event.end) && date.getNextDay().isInRange(event.start, event.end)) {
+        if (date.isInRange(event.start, event.end, event.repeat) && date.getNextDay().isInRange(event.start, event.end, event.repeat)) {
           let category = this.eventCategories.find(item => item.id === event.categoryId) || {}
           Object.assign(style, {
             backgroundColor: category.backgroundColor

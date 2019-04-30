@@ -56,10 +56,55 @@ export default class DateTime {
     return this.getTime()
   }
 
-  isInRange (start, end) {
-    let startCheck = this.getTime() >= new this.constructor(start).getTime()
-    let endCheck = this.getTime() <= new this.constructor(end).getTime()
-    return startCheck && endCheck
+  isInRange (start, end, repeat = 'never') {
+    let startDate = new this.constructor(start)
+    let endDate = new this.constructor(end)
+    let currentTime = this.getTime()
+    let startTime
+    let endTime
+    let startCheck
+    let endCheck
+    switch (repeat) {
+      case 'monthly':
+        startTime = new this.constructor(
+          this.getFullYear(),
+          this.getMonth(),
+          startDate.getDate()
+        ).getTime()
+        endTime = new this.constructor(
+          this.getFullYear(),
+          this.getMonth(),
+          endDate.getDate()
+        ).getTime()
+        startCheck = currentTime >= startTime
+        endCheck = currentTime <= endTime
+        return startCheck && endCheck
+
+      case 'yearly':
+        startTime = new this.constructor(
+          this.getFullYear(),
+          startDate.getMonth(),
+          startDate.getDate()
+        ).getTime()
+        endTime = new this.constructor(
+          this.getFullYear(),
+          endDate.getMonth(),
+          endDate.getDate()
+        ).getTime()
+        startCheck = currentTime >= startTime
+        endCheck = currentTime <= endTime
+        return startCheck && endCheck
+
+      case 'never':
+        startCheck = currentTime >= startDate.getTime()
+        endCheck = currentTime <= endDate.getTime()
+        return startCheck && endCheck
+
+      default:
+        startCheck = currentTime >= startDate.getTime()
+        endCheck = currentTime <= endDate.getTime()
+        return startCheck && endCheck
+    }
   }
 
   toDateString () {
