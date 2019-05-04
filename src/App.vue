@@ -27,13 +27,13 @@ export default {
       eventCategories: [
         {
           id: 1,
-          name: 'Personal',
+          title: 'Personal',
           textColor: 'white',
           backgroundColor: 'Blue'
         },
         {
           id: 2,
-          name: 'Company-wide',
+          title: 'Company-wide',
           textColor: 'white',
           backgroundColor: 'red'
         }

@@ -125,7 +125,7 @@ export default {
           Object.assign(style, {
             color: category.textColor,
             backgroundColor: category.backgroundColor,
-            fontWeight: 'bold'
+            fontWeight: category.id ? 'bold' : 'normal'
           })
         }
       }
