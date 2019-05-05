@@ -123,8 +123,8 @@ export default {
         if (date.isInRange(event.start, event.end, event.repeat)) {
           let category = this.eventCategories.find(item => item.id === event.categoryId) || {}
           Object.assign(style, {
-            color: category.textColor,
-            backgroundColor: category.backgroundColor,
+            color: category.id ? category.textColor : null,
+            backgroundColor: category.id ? category.backgroundColor : null,
             fontWeight: category.id ? 'bold' : 'normal'
           })
         }
