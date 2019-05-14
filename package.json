@@ -1,6 +1,6 @@
 {
   "name": "vue-sweet-calendar",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A simple and sweet calendar for Vue.js",
   "main": "./dist/",
   "files": [
