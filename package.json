@@ -2,7 +2,7 @@
   "name": "vue-sweet-calendar",
   "version": "0.2.5",
   "description": "A simple and sweet calendar for Vue.js",
-  "main": "./dist/SweetCalendar.umd.min.js",
+  "main": "./dist/",
   "files": [
     "dist/*",
     "src/*",
@@ -12,11 +12,13 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --dest docs",
-    "build-bundle": "vue-cli-service build --target lib --name SweetCalendar ./src/build.js",
+    "build:web": "vue-cli-service build --dest docs",
+    "build:main": "vue-cli-service build --target lib --name SweetCalendar ./src/components/buildComponents.js",
+    "build:calendar": "vue-cli-service build --target lib --name Calendar --dest dist/Calendar ./src/components/Calendar.vue",
+    "build": "npm-run-all build:*",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "prepare": "npm run build-bundle"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -35,6 +37,7 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
     "sass-lint": "^1.12.1",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21"

@@ -26,7 +26,7 @@ Inside your `.vue` files
 <template>
   <div id="your-component">
     <!-- Using Component -->
-    <sweet-calendar
+    <calendar
       :eventCategories="eventCategories"
       :events="events"
       ref="calendar"
@@ -35,7 +35,7 @@ Inside your `.vue` files
 </template>
 <script>
 // Importing Component and style
-import SweetCalendar from 'vue-sweet-calendar'
+import { Calendar } from 'vue-sweet-calendar'
 import 'vue-sweet-calendar/dist/SweetCalendar.css'
 
 export default {
@@ -94,7 +94,7 @@ export default {
     }
   },
   components: {
-    SweetCalendar // Registering Component
+    Calendar // Registering Component
   }
 }
 </script>
