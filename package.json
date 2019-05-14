@@ -13,7 +13,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest docs",
-    "build-bundle": "vue-cli-service build --target lib --name SweetCalendar ./src/components/Calendar.vue",
+    "build-bundle": "vue-cli-service build --target lib --name SweetCalendar ./src/build.js",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "prepare": "npm run build-bundle"
