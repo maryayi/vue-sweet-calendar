@@ -111,6 +111,13 @@ export default class DateTime {
     return this._date.toDateString()
   }
 
+  toISOString () {
+    return this._date.toISOString()
+  }
+
+  getTimezoneOffset () {
+    return this._date.getTimezoneOffset()
+  }
   getNumberOfDaysInMonth () {
     return new this.constructor(
       this.getFullYear(),

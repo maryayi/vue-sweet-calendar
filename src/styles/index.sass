@@ -92,5 +92,9 @@
         .day
           &:hover
             background-color: $selection-hover-color
-            border: 2px solid $selection-color
+            border: 2px solid $selected-color
             cursor: pointer
+
+          &.selected
+            border: 2px solid $selected-color
+            color: $selected-color

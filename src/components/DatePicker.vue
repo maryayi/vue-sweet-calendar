@@ -30,11 +30,6 @@
           :key="index"
           class="day-container"
         >
-          <!-- <div
-            class="before"
-            v-if="day"
-            :style="generateBeforeStyle(day)"
-          >&nbsp;</div> -->
           <div
             v-if="day"
             :class="[
@@ -42,16 +37,13 @@
               `day-${day.getDate()},
               weekday-${day.getDay()}`,
               offDays.includes(day.getDay()) ? 'off-day' : null,
-              day.toDateString() === today.toDateString() ? 'today' : null
+              day.toDateString() === today.toDateString() ? 'today' : null,
+              isSelected(day) ? 'selected' : null
             ]"
+            @click="selectDay(day)"
           >
             <span>{{ day.getDate() }}</span>
           </div>
-          <!-- <div
-            class="after"
-            v-if="day"
-            :style="generateAfterStyle(day)"
-          >&nbsp;</div> -->
         </div>
       </div>
     </div>
@@ -115,10 +107,26 @@ export default {
         weekdays.push(first)
       }
       return weekdays
+    },
+    selectDay (day) {
+      this.$emit('setDate', {
+        iso: day.toISOString(),
+        timeZoneOffset: day.getTimezoneOffset()
+      })
+    },
+    isSelected (day) {
+      if (!this.selectedDate) {
+        return false
+      }
+      return day.toDateString() === new DateTime(this.selectedDate).toDateString()
     }
   },
   props: {
     initialDate: {
+      type: String,
+      default: null
+    },
+    selectedDate: {
       type: String,
       default: null
     },

@@ -15,7 +15,8 @@
     </div>
     <div>
       <h2>Date Picker</h2>
-      <date-picker />
+      <input type="text" :value="selectedDate.iso">
+      <date-picker @setDate="setDate" :selectedDate="selectedDate.iso"/>
     </div>
   </div>
 </template>
@@ -74,12 +75,16 @@ export default {
           repeat: 'monthly',
           categoryId: 2
         }
-      ]
+      ],
+      selectedDate: {}
     }
   },
   methods: {
     goToday () {
       this.$refs.calendar.goToday()
+    },
+    setDate (date) {
+      this.selectedDate = date
     }
   }
 }
