@@ -1,26 +1,33 @@
 <template>
   <div id="app">
     <h1>vue-sweet-calendar</h1>
-    <button
-      @click="goToday()"
-      id="todayButton"
-    >Today</button>
-    <Calendar
-      :eventCategories="eventCategories"
-      :events="events"
-      ref="calendar"
-      msg="Welcome to Your Vue.js App"
-    />
+    <div>
+      <h2>Calendar</h2>
+      <button
+        @click="goToday()"
+        id="todayButton"
+      >Today</button>
+      <Calendar
+        :eventCategories="eventCategories"
+        :events="events"
+        ref="calendar"
+      />
+    </div>
+    <div>
+      <h2>Date Picker</h2>
+      <date-picker />
+    </div>
   </div>
 </template>
 
 <script>
 import Calendar from './components/Calendar.vue'
-
+import DatePicker from './components/DatePicker.vue'
 export default {
   name: 'app',
   components: {
-    Calendar
+    Calendar,
+    DatePicker
   },
   data () {
     return {
