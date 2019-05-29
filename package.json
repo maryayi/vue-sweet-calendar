@@ -14,7 +14,6 @@
     "serve": "vue-cli-service serve",
     "build:web": "vue-cli-service build --dest docs",
     "build:main": "vue-cli-service build --target lib --name SweetCalendar ./src/components/buildComponents.js",
-    "build:calendar": "vue-cli-service build --target lib --name Calendar --dest dist/Calendar ./src/components/Calendar.vue",
     "build": "npm-run-all build:*",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
