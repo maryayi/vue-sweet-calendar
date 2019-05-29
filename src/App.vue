@@ -92,7 +92,7 @@ export default {
     margin-bottom: 20px
     width: 90px
     height: 40px
-    background-color: $light-color
+    background-color: white
     color: $today-color
     border: 2px solid $today-color
     border-radius: 10px
