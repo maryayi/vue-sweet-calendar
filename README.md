@@ -12,6 +12,11 @@
 
 A simple and sweet vue.js calendar
 
+## Features
+
+- Showing Multiple-Events
+- Fully customizable 
+
 ## How to install
 
 ```
