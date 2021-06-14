@@ -44,6 +44,12 @@ export default {
           title: 'Company-wide',
           textColor: 'white',
           backgroundColor: 'red'
+        },
+        {
+          id: 3,
+          title: 'National',
+          textColor: 'white',
+          backgroundColor: 'green'
         }
       ],
       events: [
@@ -74,7 +80,14 @@ export default {
           end: '2019-04-23',
           repeat: 'monthly',
           categoryId: 2
-        }
+        },
+        {
+          title: 'test5',
+          start: '2021-06-17',
+          end: '2021-06-18',
+          repeat: 'weekly',
+          categoryId: 3
+        },
       ],
       selectedDate: {}
     }

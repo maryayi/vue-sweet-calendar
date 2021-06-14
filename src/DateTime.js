@@ -1,5 +1,5 @@
 export default class DateTime {
-  constructor (...args) {
+  constructor(...args) {
     let date
     if (args.length > 1) {
       let [year, month, ...rest] = args
@@ -65,6 +65,13 @@ export default class DateTime {
     let startCheck
     let endCheck
     switch (repeat) {
+      case 'weekly':
+        startTime = startDate.getDay();
+        endTime = endDate.getDay();
+        startCheck = this.getDay() >= startTime
+        endCheck = this.getDay() <= endTime
+        return startCheck && endCheck
+
       case 'monthly':
         startTime = new this.constructor(
           this.getFullYear(),
