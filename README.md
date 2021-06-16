@@ -201,6 +201,11 @@ export default {
 ]
 ```
 
+## Contributing
+
+Visit [CONTRIBUTING Page](https://github.com/maryayi/vue-sweet-calendar/blob/master/CONTRIBUTING.md)
+
+
 ## Project setup
 
 ```
